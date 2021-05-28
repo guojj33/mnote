@@ -113,7 +113,7 @@ void do_new() {
   noteCount++;// update noteCount
   notes = realloc(notes, noteCount*sizeof(char *));
   notes[noteCount-1] = newNoteName;
-  printf("[debug] new file name = %s\n", newNoteName);
+  // printf("[debug] new file name = %s\n", newNoteName);
   char *fullNotePath = joinPath(fullProgramDir, newNoteName);
   /* create file */
   FILE *note = fopen(fullNotePath, "w");

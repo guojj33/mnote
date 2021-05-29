@@ -93,15 +93,16 @@ int getIntLen(int i) {
   return len;
 }
 
-char *getTimeStr() {
+char *getNewNoteName() {
   time_t now;
   struct tm *timenow;
   time(&now);
   timenow = localtime(&now);
   char buf[25];
   strftime(buf, 25, "%Y.%m.%d.%H.%M.%S", timenow);
-  char *str = (char *)malloc(strlen(buf));
+  char *str = (char *)malloc(strlen(buf)+strlen(noteExtension));
   strncpy(str, buf, strlen(buf));
+  strncpy(str+strlen(buf), noteExtension, strlen(noteExtension));
   return str;
 }
 
@@ -109,7 +110,7 @@ char *getTimeStr() {
 void do_new() {
   // printf("[debug] do new\n");
   /* get new note name */
-  char *newNoteName = getTimeStr();
+  char *newNoteName = getNewNoteName();
   noteCount++;// update noteCount
   notes = realloc(notes, noteCount*sizeof(char *));
   notes[noteCount-1] = newNoteName;

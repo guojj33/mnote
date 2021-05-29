@@ -8,8 +8,9 @@
 
 const char programDir[] = ".mnote";
 const char configFile[] = ".config";
-char *fullProgramDir;
-char *fullConfigFile;
+const char noteExtension[] = ".md";
+char *fullProgramDir; //  ~/.mnote
+char *fullConfigFile; //  ~/.mnote/.config
 
 char **notes;
 int noteCount = 0;
@@ -20,6 +21,7 @@ void update_config();
 
 void init();
 void do_list();
+char *getNewNoteName();
 void do_new();
 void do_help();
 void do_vim(int selectedIndex);

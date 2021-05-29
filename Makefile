@@ -19,7 +19,7 @@ uninstall:
 bin :
 	@mkdir -p $(BIN_DIR)
 
-$(BIN_DIR)/%: $(SRC_DIR)/%.c
+$(BIN_DIR)/%: $(SRC_DIR)/%.c $(HEADER_DIR)/%.h
 	@$(CC) $^ -o $@ $(INCLUDE)
 
 clean :

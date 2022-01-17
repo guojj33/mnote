@@ -129,7 +129,7 @@ void do_help() {
 
 /* open selected note with Vim */
 void do_vim(int selectedIndex) {
-  printf("[debug] do vim\n");
+  // printf("[debug] do vim\n");
   char *fullPath = getNotePath(selectedIndex);
   if (fullPath != NULL) {
     // printf("[debug] vim %s", fullPath);

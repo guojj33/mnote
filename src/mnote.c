@@ -127,9 +127,9 @@ void do_help() {
   
 }
 
-/* open selcted note with Vim */
+/* open selected note with Vim */
 void do_vim(int selectedIndex) {
-  // printf("[debug] do vim\n");
+  printf("[debug] do vim\n");
   char *fullPath = getNotePath(selectedIndex);
   if (fullPath != NULL) {
     // printf("[debug] vim %s", fullPath);
@@ -138,6 +138,20 @@ void do_vim(int selectedIndex) {
   }
   else {
     // printf("[debug] file doesn't exist\n");
+  }
+}
+
+/* print selected note to stdout */
+void do_print(int selectedIndex) {
+  // printf("[debug] do print\n");
+  int pid = fork();
+  if (pid) { // parent
+    int status;
+    wait(&status);
+  }
+  else {  // child
+    char *notePath = getNotePath(selectedIndex);
+    execlp("cat", "cat", notePath, NULL);
   }
 }
 
@@ -197,6 +211,9 @@ int main (int argc, char *argv[], char *env[]) {
         {
         case 'v':
           do_vim(selectedIndex);
+          return 0;
+        case 'p':
+          do_print(selectedIndex);
           return 0;
         case 'd':
           do_delete(selectedIndex);

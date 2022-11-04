@@ -1,4 +1,4 @@
-# mnote - a sticky note CLI
+# mnote - a sticky note program
 
 ## Test Environment
 Ubuntu-18.04

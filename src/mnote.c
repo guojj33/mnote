@@ -1,7 +1,7 @@
 #include "mnote.h"
 
 char *joinPath(const char *a, const char *b) {
-  char *path = (char *)malloc(strlen(a)+1+strlen(b));
+  char *path = (char *)malloc(strlen(a)+1+strlen(b)+1);
   strcpy(path, a);
   strcpy(path+strlen(a), "/");
   strcpy(path+strlen(a)+1, b);
@@ -56,6 +56,7 @@ void update_config() {
   for (int i = 0; i < noteCount; ++i) {
     fprintf(cf, "%s\n", notes[i]);
   }
+  fclose(cf);
 }
 
 void printDivideLine(int count) {
@@ -225,4 +226,5 @@ int main (int argc, char *argv[], char *env[]) {
       }
     }
   }
+  return 0;
 }
